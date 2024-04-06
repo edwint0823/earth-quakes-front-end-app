@@ -11,7 +11,7 @@
                    placeholder="Seleccione los tipos de magnitudes" class="w-full"/>
     </div>
     <div class="flex justify-end items-end gap-2">
-      <Button label="Buscar" icon="pi pi-search" @click="getFeatures"/>
+      <Button label="Buscar" icon="pi pi-search" @click="filterFeatures"/>
       <Button label="limpiar" icon="pi pi-eraser" outlined severity="info" @click="clearMagType"></Button>
     </div>
   </div>
@@ -85,11 +85,15 @@ const getFeatures = async () => {
 
 const onPageChange = (event) => {
   paginator.value.per_page = event.rows;
-  paginator.value.page = event.first + 1;
+  paginator.value.page = event.page + 1;
   getFeatures();
 };
 const clearMagType = () => {
   mag_type.value = undefined
+  getFeatures()
+}
+const filterFeatures = () => {
+  paginator.value.page = 1
   getFeatures()
 }
 const addComment = (featureId) => {
