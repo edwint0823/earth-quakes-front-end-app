@@ -51,12 +51,15 @@
       />
     </template>
   </DataTable>
+  <AddCommentDialog ref="addCommentDialogRef"></AddCommentDialog>
 </template>
 <script setup>
 import {onMounted, ref} from "vue";
 import {paginateFeatures} from "@/services/features/features.service.js";
 import {magTypeListOpts} from "@/core/constants.js";
+import AddCommentDialog from "@/components/AddCommentDialog.vue";
 
+const addCommentDialogRef = ref()
 const features = ref([])
 const mag_type = ref()
 const paginator = ref({
@@ -77,7 +80,6 @@ const getFeatures = async () => {
   await paginateFeatures(payload).then(({data}) => {
     features.value = data.data
     paginator.value.total = data.pagination.total
-    console.log(data)
   })
 }
 
@@ -91,7 +93,7 @@ const clearMagType = () => {
   getFeatures()
 }
 const addComment = (featureId) => {
-  console.log(featureId)
+  addCommentDialogRef.value.openModal(featureId)
 }
 onMounted(() => {
   getFeatures()
