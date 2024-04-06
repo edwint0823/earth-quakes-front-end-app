@@ -1,12 +1,12 @@
 export default {
-    root: ({ props, state }) => ({
+    root: ({props, state}) => ({
         class: [
             // Display and Position
             'inline-flex',
             'relative',
 
             // Shape
-            'w-full md:max-w-[20rem]',
+            'w-full',
             'rounded-md',
             'shadow-sm',
 
@@ -14,25 +14,31 @@ export default {
             'bg-surface-0 dark:bg-surface-900',
 
             // States
-            { 'ring-1 ring-inset ring-surface-300 dark:ring-surface-700': !state.focused, 'ring-2 ring-inset ring-primary-500 dark:ring-primary-400': state.focused },
+            {
+                'ring-1 ring-inset ring-surface-300 dark:ring-surface-700': !state.focused,
+                'ring-2 ring-inset ring-primary-500 dark:ring-primary-400': state.focused
+            },
 
             // Misc
             'cursor-default',
             'select-none',
-            { 'opacity-60': props.disabled, 'pointer-events-none': props.disabled }
+            {'opacity-60': props.disabled, 'pointer-events-none': props.disabled}
         ]
     }),
     labelContainer: {
         class: 'overflow-hidden flex flex-auto cursor-pointer'
     },
-    label: ({ props }) => ({
+    label: ({props}) => ({
         class: [
             'block leading-5',
 
             props.display === 'chip' && props?.modelValue?.length > 0 ? 'py-1 px-3' : 'py-1.5 px-3',
 
             // Color
-            { 'text-surface-800 dark:text-white/80': props.modelValue, 'text-surface-400 dark:text-surface-500': !props.modelValue },
+            {
+                'text-surface-800 dark:text-white/80': props.modelValue,
+                'text-surface-400 dark:text-surface-500': !props.modelValue
+            },
             'placeholder:text-surface-400 dark:placeholder:text-surface-500',
 
             // Transitions
@@ -152,7 +158,7 @@ export default {
             'select-none'
         ]
     },
-    headerCheckbox: ({ context, state }) => ({
+    headerCheckbox: ({context, state}) => ({
         class: [
             // Alignment
             'flex',
@@ -174,7 +180,7 @@ export default {
                 'border-primary-500 bg-primary-500 dark:border-primary-400 dark:bg-primary-400': context?.selected
             },
 
-            { 'outline-offset-0 ring-1 ring-primary-500 dark:ring-primary-400': state.focused }
+            {'outline-offset-0 ring-1 ring-primary-500 dark:ring-primary-400': state.focused}
         ]
     }),
     headercheckboxicon: {
@@ -249,12 +255,12 @@ export default {
     list: {
         class: 'py-1 list-none m-0'
     },
-    item: ({ context }) => ({
+    item: ({context}) => ({
         class: [
             // Font
             'sm:text-sm',
             'leading-none',
-            { 'font-normal': !context.selected, 'font-bold': context.selected },
+            {'font-normal': !context.selected, 'font-bold': context.selected},
 
             // Flexbox
             'flex items-center',
@@ -271,10 +277,10 @@ export default {
             'py-2 px-4',
 
             // Color
-            { 'text-surface-700 dark:text-white/80': !context.focused && !context.selected },
-            { 'bg-surface-200 dark:bg-surface-600/60 text-surface-700 dark:text-white/80': context.focused && !context.selected },
-            { 'bg-primary-500 dark:bg-primary-400 text-white dark:text-surface-700': context.focused && context.selected },
-            { 'bg-transparent text-surface-700 dark:text-white/80': !context.focused && context.selected },
+            {'text-surface-700 dark:text-white/80': !context.focused && !context.selected},
+            {'bg-surface-200 dark:bg-surface-600/60 text-surface-700 dark:text-white/80': context.focused && !context.selected},
+            {'bg-primary-500 dark:bg-primary-400 text-white dark:text-surface-700': context.focused && context.selected},
+            {'bg-transparent text-surface-700 dark:text-white/80': !context.focused && context.selected},
 
             //States
             'hover:bg-primary-500 dark:hover:bg-primary-400 hover:text-white dark:hover:text-surface-700',
@@ -305,7 +311,7 @@ export default {
             'select-none'
         ]
     },
-    checkbox: ({ context }) => ({
+    checkbox: ({context}) => ({
         class: [
             // Alignment
             'flex',
