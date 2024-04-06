@@ -8,3 +8,7 @@ export const paginateFeatures = async (params) => {
         }
     })
 }
+
+export const saveCommentFeature = async (featureId, data) => {
+    return await axios.post(`${API_BACKEND_EARTH_QUAKE}/api/features/${featureId}/comments`, data, {})
+}
